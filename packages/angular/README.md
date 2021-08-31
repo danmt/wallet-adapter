@@ -1,5 +1,1 @@
-# `@solana/wallet-adapter-react`
-
-<!-- @TODO -->
-
-Coming soon.
+# @solana/wallet-adapter-angular
