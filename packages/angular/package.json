@@ -6,6 +6,9 @@
     "license": "Apache-2.0",
     "main": "lib/bundles/angular-umd.js",
     "types": "lib/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
     "files": [
         "lib",
         "src"
