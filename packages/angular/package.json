@@ -1,8 +1,8 @@
 {
-    "name": "@solana/wallet-adapter-angular",
+    "name": "@danmt/wallet-adapter-angular",
     "version": "0.1.0",
-    "author": "Solana Maintainers <maintainers@solana.foundation>",
-    "repository": "https://github.com/solana-labs/wallet-adapter",
+    "author": "Daniel Marin",
+    "repository": "https://github.com/danmt/wallet-adapter",
     "license": "Apache-2.0",
     "main": "lib/bundles/angular-umd.js",
     "types": "lib/index.d.ts",
