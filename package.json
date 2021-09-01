@@ -1,5 +1,4 @@
 {
-    "private": true,
     "name": "@danmt/wallet-adapter",
     "author": "Daniel Marin",
     "repository": "https://github.com/danmt/wallet-adapter",

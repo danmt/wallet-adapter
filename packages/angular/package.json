@@ -16,26 +16,27 @@
     },
     "peerDependencies": {
         "@angular/core": "^12.2.0",
-        "rxjs": "~6.6.0",
+        "@ngrx/component-store": "^12.4.0",
         "@solana/wallet-adapter-base": "^0.5.1",
         "@solana/wallet-adapter-wallets": "^0.7.3",
         "@solana/web3.js": "^1.20.0",
-        "@ngrx/component-store": "^12.4.0"
+        "rxjs": "~6.6.0"
     },
     "dependencies": {
         "tslib": "^2.3.0"
     },
     "devDependencies": {
-        "rxjs": "~6.6.0",
+        "@angular-devkit/build-angular": "~12.2.3",
+        "@angular/cli": "~12.2.3",
+        "@angular/compiler": "^12.2.3",
+        "@angular/compiler-cli": "~12.2.0",
+        "@angular/core": "^12.2.0",
+        "@ngrx/component-store": "^12.4.0",
         "@solana/wallet-adapter-base": "^0.5.1",
         "@solana/wallet-adapter-wallets": "^0.7.3",
         "@solana/web3.js": "^1.20.0",
-        "@ngrx/component-store": "^12.4.0",
-        "@angular/core": "^12.2.0",
-        "@angular/compiler": "^12.2.3",
-        "@angular-devkit/build-angular": "~12.2.3",
-        "@angular/cli": "~12.2.3",
-        "@angular/compiler-cli": "~12.2.0",
-        "ng-packagr": "^12.1.1"
-    }
+        "ng-packagr": "^12.1.1",
+        "rxjs": "~6.6.0"
+    },
+    "gitHead": "c9c71c3602fe7c5148781746dd08fbe3e5d9bece"
 }
