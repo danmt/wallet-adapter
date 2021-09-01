@@ -1,8 +1,8 @@
 {
     "private": true,
-    "name": "@solana/wallet-adapter",
-    "author": "Solana Maintainers <maintainers@solana.foundation>",
-    "repository": "https://github.com/solana-labs/wallet-adapter",
+    "name": "@danmt/wallet-adapter",
+    "author": "Daniel Marin",
+    "repository": "https://github.com/danmt/wallet-adapter",
     "license": "Apache-2.0",
     "workspaces": [
         "packages/*"
