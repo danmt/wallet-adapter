@@ -4,14 +4,13 @@
     "author": "Daniel Marin",
     "repository": "https://github.com/danmt/wallet-adapter",
     "license": "Apache-2.0",
-    "main": "lib/bundles/angular-umd.js",
+    "main": "lib/bundles/danmt-wallet-adapter-angular.umd.js",
     "types": "lib/index.d.ts",
     "publishConfig": {
         "access": "public"
     },
     "files": [
-        "lib",
-        "src"
+        "lib/*"
     ],
     "scripts": {
         "clean": "rm -rf lib/*",
