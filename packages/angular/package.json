@@ -1,6 +1,6 @@
 {
     "name": "@danmt/wallet-adapter-angular",
-    "version": "0.1.10",
+    "version": "0.1.11",
     "author": "Daniel Marin",
     "repository": "https://github.com/danmt/wallet-adapter",
     "license": "Apache-2.0",
@@ -15,7 +15,10 @@
         "fesm2015",
         "danmt-wallet-adapter-angular.d.ts",
         "index.d.ts",
-        "package.json"
+        "package.json",
+        "connection",
+        "wallet",
+        "operators"
     ],
     "scripts": {
         "clean": "rm -rf lib/*",
