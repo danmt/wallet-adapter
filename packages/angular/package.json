@@ -1,11 +1,11 @@
 {
     "name": "@danmt/wallet-adapter-angular",
-    "version": "0.1.0",
+    "version": "0.1.7",
     "author": "Daniel Marin",
     "repository": "https://github.com/danmt/wallet-adapter",
     "license": "Apache-2.0",
-    "main": "lib/bundles/danmt-wallet-adapter-angular.umd.js",
-    "types": "lib/index.d.ts",
+    "main": "bundles/danmt-wallet-adapter-angular.umd.js",
+    "types": "index.d.ts",
     "publishConfig": {
         "access": "public"
     },
@@ -14,7 +14,8 @@
     ],
     "scripts": {
         "clean": "rm -rf lib/*",
-        "build": "yarn clean && ng build angular --configuration=production"
+        "build": "yarn clean && ng build angular --configuration=production",
+        "publish": "echo 'maldita sea'"
     },
     "peerDependencies": {
         "@angular/core": "^12.2.0",
