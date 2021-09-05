@@ -35,5 +35,11 @@
         "ng-packagr": "^12.1.1",
         "rxjs": "~6.6.0"
     },
-    "gitHead": "6150dca2fe9c3f4b0721b367e92794fc2c3c6342"
+    "main": "lib/bundles/danmt-wallet-adapter-angular.umd.js",
+    "module": "lib/fesm2015/danmt-wallet-adapter-angular.js",
+    "es2015": "lib/fesm2015/danmt-wallet-adapter-angular.js",
+    "esm2015": "lib/esm2015/danmt-wallet-adapter-angular.js",
+    "fesm2015": "lib/fesm2015/danmt-wallet-adapter-angular.js",
+    "typings": "lib/danmt-wallet-adapter-angular.d.ts",
+    "sideEffects": false
 }
