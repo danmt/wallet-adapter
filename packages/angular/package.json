@@ -1,6 +1,6 @@
 {
     "name": "@danmt/wallet-adapter-angular",
-    "version": "0.1.14",
+    "version": "0.1.15",
     "author": "Daniel Marin",
     "repository": "https://github.com/danmt/wallet-adapter",
     "license": "Apache-2.0",
@@ -41,5 +41,5 @@
         "ng-packagr": "^12.1.1",
         "rxjs": "~6.6.0"
     },
-    "gitHead": "c9c71c3602fe7c5148781746dd08fbe3e5d9bece"
+    "gitHead": "31f328683352d56f388e198637df94f3d70d3046"
 }
