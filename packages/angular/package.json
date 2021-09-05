@@ -4,12 +4,6 @@
     "author": "Daniel Marin",
     "repository": "https://github.com/danmt/wallet-adapter",
     "license": "Apache-2.0",
-    "main": "lib/bundles/danmt-wallet-adapter-angular.umd.js",
-    "types": "lib/index.d.ts",
-    "files": [
-        "src",
-        "lib"
-    ],
     "publishConfig": {
         "access": "public"
     },
@@ -41,5 +35,5 @@
         "ng-packagr": "^12.1.1",
         "rxjs": "~6.6.0"
     },
-    "gitHead": "c5e5ca358e463465d9b3bec130897076cae12c43"
+    "gitHead": "6150dca2fe9c3f4b0721b367e92794fc2c3c6342"
 }
