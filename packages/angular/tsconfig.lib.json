@@ -14,7 +14,7 @@
         "importHelpers": true,
         "module": "es2020",
         "outDir": "lib",
-        "target": "es2015",
+        "target": "es6",
         "declaration": true,
         "declarationMap": true,
         "inlineSources": true,
