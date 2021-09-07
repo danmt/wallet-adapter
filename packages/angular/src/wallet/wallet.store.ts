@@ -209,8 +209,7 @@ export class WalletStore extends ComponentStore<WalletState> {
                 }
 
                 return from(defer(() => adapter.sendTransaction(transaction, connection, options))).pipe(
-                    map((txId) => txId as string),
-                    catchError(() => EMPTY)
+                    map((txId) => txId as string)
                 );
             })
         );
