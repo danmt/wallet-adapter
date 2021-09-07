@@ -9,6 +9,7 @@ export const walletProvider = (config?: WalletConfig) => [
             wallets: config?.wallets || [],
             autoConnect: config?.autoConnect || false,
             localStorageKey: config?.localStorageKey || 'walletName',
+            onError: (error: unknown) => console.error(error),
         },
     },
     WalletStore,

@@ -20,6 +20,7 @@ import { WalletConfig, WalletState } from './wallet.types';
 export class WalletStore extends ComponentStore<WalletState> {
     private readonly _autoConnect = this._config?.autoConnect || false;
     private readonly _localStorageKey = this._config?.localStorageKey || 'walletName';
+    private logError = this._config.onError;
     readonly wallets$ = this.select((state) => state.wallets);
     readonly selectedWallet$ = this.select((state) => state.selectedWallet);
     readonly connected$ = this.select((state) => state.connected);
@@ -190,12 +191,6 @@ export class WalletStore extends ComponentStore<WalletState> {
             tap((error) => this.logError(error))
         );
     });
-
-    private logError = (error: unknown) => console.error(error);
-
-    setErrorHandler(errorHandler: (error: unknown) => void) {
-        this.logError = errorHandler;
-    }
 
     sendTransaction(
         transaction: Transaction,
