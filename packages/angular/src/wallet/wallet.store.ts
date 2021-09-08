@@ -1,12 +1,12 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { SendTransactionOptions, WalletNotConnectedError, WalletNotReadyError } from '@solana/wallet-adapter-base';
 import { WalletName } from '@solana/wallet-adapter-wallets';
 import { Connection, Transaction } from '@solana/web3.js';
-import { asyncScheduler, combineLatest, defer, EMPTY, from, Observable, of, throwError } from 'rxjs';
+import { asyncScheduler, combineLatest, defer, from, Observable, of, throwError } from 'rxjs';
 import { catchError, concatMap, filter, first, map, observeOn, switchMap, tap, withLatestFrom } from 'rxjs/operators';
-import { SignMessageNotFoundError } from '.';
 
+import { SignMessageNotFoundError } from '.';
 import { fromAdapterEvent, isNotNull } from '../operators';
 import {
     SignAllTransactionsNotFoundError,
@@ -15,6 +15,13 @@ import {
 } from './wallet.errors';
 import { WALLET_CONFIG } from './wallet.tokens';
 import { WalletConfig, WalletState } from './wallet.types';
+
+export const WALLET_DEFAULT_CONFIG: WalletConfig = {
+    wallets: [],
+    autoConnect: false,
+    localStorageKey: 'walletName',
+    onError: (error: unknown) => console.error(error),
+};
 
 @Injectable()
 export class WalletStore extends ComponentStore<WalletState> {
@@ -37,6 +44,7 @@ export class WalletStore extends ComponentStore<WalletState> {
     }));
 
     constructor(
+        @Optional()
         @Inject(WALLET_CONFIG)
         private _config: WalletConfig
     ) {
@@ -53,13 +61,22 @@ export class WalletStore extends ComponentStore<WalletState> {
             autoApprove: false,
         });
 
+        if (!this._config) {
+            this._config = WALLET_DEFAULT_CONFIG;
+        } else {
+            this._config = {
+                ...WALLET_DEFAULT_CONFIG,
+                ...this._config,
+            };
+        }
+
         const walletName = localStorage.getItem(this._localStorageKey);
-        const wallet = _config.wallets.find(({ name }) => name === walletName);
+        const wallet = this._config.wallets.find(({ name }) => name === walletName);
 
         if (wallet) {
             this.selectWallet(walletName as WalletName);
-        } else if (_config.wallets.length > 0) {
-            this.selectWallet(_config.wallets[0].name);
+        } else if (this._config.wallets.length > 0) {
+            this.selectWallet(this._config.wallets[0].name);
         }
     }
 
