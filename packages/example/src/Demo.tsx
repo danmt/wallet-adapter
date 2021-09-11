@@ -6,7 +6,7 @@ import {
     WalletModalProvider as AntDesignWalletModalProvider,
     WalletMultiButton as AntDesignWalletMultiButton,
 } from '@solana/wallet-adapter-ant-design';
-import { WalletError } from '@solana/wallet-adapter-base';
+import { WalletAdapterNetwork, WalletError } from '@solana/wallet-adapter-base';
 import {
     WalletConnectButton as MaterialUIWalletConnectButton,
     WalletDialogButton as MaterialUIWalletDialogButton,
@@ -14,24 +14,22 @@ import {
     WalletDisconnectButton as MaterialUIWalletDisconnectButton,
     WalletMultiButton as MaterialUIWalletMultiButton,
 } from '@solana/wallet-adapter-material-ui';
-import {
-    WalletConnectButton as ReactUIWalletConnectButton,
-    WalletModalButton as ReactUIWalletModalButton,
-    WalletModalProvider as ReactUIWalletModalProvider,
-    WalletDisconnectButton as ReactUIWalletDisconnectButton,
-    WalletMultiButton as ReactUIWalletMultiButton,
-} from '@solana/wallet-adapter-react-ui';
 import { ConnectionProvider, useLocalStorage, WalletProvider } from '@solana/wallet-adapter-react';
 import {
-    getBitpieWallet,
-    getCoin98Wallet,
+    WalletConnectButton as ReactUIWalletConnectButton,
+    WalletDisconnectButton as ReactUIWalletDisconnectButton,
+    WalletModalButton as ReactUIWalletModalButton,
+    WalletModalProvider as ReactUIWalletModalProvider,
+    WalletMultiButton as ReactUIWalletMultiButton,
+} from '@solana/wallet-adapter-react-ui';
+import {
+    getBloctoWallet,
     getLedgerWallet,
-    getMathWallet,
     getPhantomWallet,
     getSlopeWallet,
     getSolflareWallet,
     getSolletWallet,
-    getSolongWallet,
+    getSolletExtensionWallet,
     getTorusWallet,
 } from '@solana/wallet-adapter-wallets';
 import { clusterApiUrl } from '@solana/web3.js';
@@ -43,27 +41,26 @@ import SendTransaction from './SendTransaction';
 import SignMessage from './SignMessage';
 
 export const Demo: FC = () => {
-    const endpoint = useMemo(() => clusterApiUrl('devnet'), []);
+    const network = WalletAdapterNetwork.Devnet;
+    const endpoint = useMemo(() => clusterApiUrl(network), [network]);
     const [autoConnect, setAutoConnect] = useLocalStorage('autoConnect', false);
 
     const wallets = useMemo(
         () => [
             getPhantomWallet(),
             getSolflareWallet(),
+            getSlopeWallet(),
             getTorusWallet({
                 options: {
                     clientId: 'BOM5Cl7PXgE9Ylq1Z1tqzhpydY0RVr8k90QQ85N7AKI5QGSrr9iDC-3rvmy0K_hF0JfpLMiXoDhta68JwcxS1LQ',
                 },
             }),
             getLedgerWallet(),
-            getSolongWallet(),
-            getMathWallet(),
-            getSolletWallet(),
-            getCoin98Wallet(),
-            getBitpieWallet(),
-            getSlopeWallet(),
+            getBloctoWallet({ network }),
+            getSolletWallet({ network }),
+            getSolletExtensionWallet({ network }),
         ],
-        []
+        [network]
     );
 
     const { enqueueSnackbar } = useSnackbar();

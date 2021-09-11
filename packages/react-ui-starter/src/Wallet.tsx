@@ -1,42 +1,42 @@
-import { WalletError } from '@solana/wallet-adapter-base';
+import { WalletAdapterNetwork, WalletError } from '@solana/wallet-adapter-base';
+import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
-import { WalletProvider } from '@solana/wallet-adapter-react';
 import {
-    getBitpieWallet,
-    getCoin98Wallet,
+    getBloctoWallet,
     getLedgerWallet,
-    getMathWallet,
     getPhantomWallet,
+    getSlopeWallet,
     getSolflareWallet,
     getSolletWallet,
-    getSolongWallet,
+    getSolletExtensionWallet,
     getTorusWallet,
 } from '@solana/wallet-adapter-wallets';
+import { clusterApiUrl } from '@solana/web3.js';
 import React, { FC, useCallback, useMemo } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import Navigation from './Navigation';
 import Notification from './Notification';
 
 const Wallet: FC = () => {
+    const network = WalletAdapterNetwork.Devnet;
+    const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+
     // @solana/wallet-adapter-wallets imports all the adapters but supports tree shaking --
     // Only the wallets you want to support will be compiled into your application
     const wallets = useMemo(
         () => [
             getPhantomWallet(),
             getSolflareWallet(),
+            getSlopeWallet(),
             getTorusWallet({
-                options: {
-                    clientId: 'BOM5Cl7PXgE9Ylq1Z1tqzhpydY0RVr8k90QQ85N7AKI5QGSrr9iDC-3rvmy0K_hF0JfpLMiXoDhta68JwcxS1LQ',
-                },
+                options: { clientId: 'Get a client ID @ https://developer.tor.us' },
             }),
             getLedgerWallet(),
-            getSolletWallet(),
-            getSolongWallet(),
-            getMathWallet(),
-            getCoin98Wallet(),
-            getBitpieWallet(),
+            getBloctoWallet({ network }),
+            getSolletWallet({ network }),
+            getSolletExtensionWallet({ network }),
         ],
-        []
+        [network]
     );
 
     const onError = useCallback(
@@ -51,12 +51,14 @@ const Wallet: FC = () => {
     );
 
     return (
-        <WalletProvider wallets={wallets} onError={onError} autoConnect>
-            <WalletModalProvider>
-                <Navigation />
-            </WalletModalProvider>
-            <Toaster position="bottom-left" reverseOrder={false} />
-        </WalletProvider>
+        <ConnectionProvider endpoint={endpoint}>
+            <WalletProvider wallets={wallets} onError={onError} autoConnect>
+                <WalletModalProvider>
+                    <Navigation />
+                </WalletModalProvider>
+                <Toaster position="bottom-left" reverseOrder={false} />
+            </WalletProvider>
+        </ConnectionProvider>
     );
 };
 
