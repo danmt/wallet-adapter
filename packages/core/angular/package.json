@@ -8,10 +8,6 @@
     "publishConfig": {
         "access": "public"
     },
-    "files": [
-        "lib",
-        "src"
-    ],
     "scripts": {
         "clean": "rm -rf lib/*",
         "build": "yarn clean && ng build angular --configuration=production"
